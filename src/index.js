@@ -1,8 +1,10 @@
+const axios = require('axios');
 require('dotenv').config();
 
-(async => {
+(async () => {
     let loops = 1;
-    const handler = setInterval(() => {
+    const handler = setInterval(async () => {
+        await axios.get(`http://192.168.0.196:3000/api/v1/dev/status`);
         console.log('Service is running in loop:', loops);
         loops += 1;
         if (loops > 30) {
