@@ -1,14 +1,13 @@
-const express = require('express');
 require('dotenv').config();
 
-const app = express();
-const PORT = process.env.PORT || 3000;
-
-app.get('/', (req, res) => {
-    console.log('Received a request at /');
-    res.send('Hello, World!');
-});
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+(async => {
+    let loops = 1;
+    const handler = setInterval(() => {
+        console.log('Service is running in loop:', loops);
+        loops += 1;
+        if (loops > 30) {
+            clearInterval(handler);
+            console.log('Service has stopped on loop:', loops - 1);
+        }
+    }, 1000);
+})()
