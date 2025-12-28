@@ -12,5 +12,5 @@ require('dotenv').config();
             clearInterval(handler);
             console.log('Service has stopped on loop:', loops - 1);
         }
-    }, 1000);
+    }, 2000);
 })()
